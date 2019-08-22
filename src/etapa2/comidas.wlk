@@ -16,14 +16,38 @@ object bigMac {
  * el alcaucil da 20 joules por gramo
  */ 
 object alcaucil {
-	// completar
+	method energiaPorGramo() { return 20 }
 }
 
+object mijo {
+	var estaMojado = false
+	
+	method energiaPorGramo() { return if (estaMojado) {15} else {20}  }
+	method mojarse() { estaMojado = true }
+	method secarse() { estaMojado = false }
+}
 /*
  * el sorgo da 9 joules por gramo
  */ 
 object sorgo {
-	// completar
+	method energiaPorGramo() { return 9 }
 }
 
-// despues, agregar mijo y canelones
+object canelones {
+	var tieneSalsa = false
+	var tieneQueso = false
+	const base = 20
+	const extraSalsa = 5
+	const extraQueso = 7
+
+	method energiaPorGramo() { 
+		return base 
+			+ (if (tieneSalsa) {extraSalsa} else {0} )
+			+ (if (tieneQueso) {extraQueso} else {0} )
+	}
+	
+	method ponerSalsa() { tieneSalsa = true }
+	method sacarSalsa() { tieneSalsa = false }
+	method ponerQueso() { tieneQueso = true }
+	method sacarQueso() { tieneQueso = false }
+}
